@@ -109,14 +109,9 @@ pip install -r requirements.txt
 
 ### Iniciar Servicios de Kafka
 
-**Terminal 1: Zookeeper**
-```bash
-/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
-```
-
 **Terminal 2: Kafka Server**
 ```bash
-/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+sudo /opt/Kafka/bin/kafka-server-start.sh /opt/Kafka/config/server.properties &
 ```
 
 ### Crear Topic de Kafka
@@ -132,7 +127,7 @@ pip install -r requirements.txt
 ### Verificar Topic
 
 ```bash
-/opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+/opt/Kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 ```
 
 ## 🚀 Ejecución
@@ -187,22 +182,69 @@ El procesamiento batch genera:
 
 ### Streaming en Tiempo Real
 
-El consumidor streaming muestra:
+Streaming en Tiempo Real
 
-1. **Conteo por género** en tiempo real
-2. **Actualización continua** de estadísticas
-3. **Visualización en consola** de micro-batches procesados
+La aplicación de Spark Structured Streaming consume datos de violencia intrafamiliar desde Kafka, mostrando analítica en vivo a medida que llegan nuevos casos.
 
-### Ejemplo de Salida
+Los indicadores que se visualizan en tiempo real son:
 
-```
-+--------+------+
-| GENERO |CASOS |
-+--------+------+
-|FEMENINO| 8453 |
-|MASCULINO| 1247|
-+--------+------+
-```
+✅ Total de casos por departamento y Armas -medios
+✅ Total de casos por genero y año
+
+Cada micro-batch procesado por Spark actualiza la consola automáticamente.
+
+Ejemplo de salida en consola
+
+A continuación se muestra cómo se visualizan los resultados de los micro-batches:
+
+Casos por Arma/Medio
+Batch: 13
+-------------------------------------------
++--------------------+-----------+
+|ARMAS MEDIOS        |TOTAL_CASOS|
++--------------------+-----------+
+|CONTUNDENTES        |        82 |
+|NO REPORTADO        |         7 |
+|ARMA BLANCA / COR...|         5 |
+|CORTANTES           |         3 |
+|NO REPORTA          |         3 |
+|ARMA DE FUEGO       |         1 |
+|CORTOPUNZANTES      |         1 |
++--------------------+-----------+
+
+Casos por Género
+Batch: 13
+-------------------------------------------
++---------+-----+
+|GENERO   |CASOS|
++---------+-----+
+|FEMENINO |   80|
+|MASCULINO|   23|
++---------+-----+
+
+Evolución Temporal por Año
+Batch: 13
+-------------------------------------------
++----+--------------+
+|ANIO|CASOS_POR_ANIO|
++----+--------------+
+|2010|           104|
++----+--------------+
+
+Casos por Departamento
+Batch: 14
+-------------------------------------------
++------------------+-----------+
+|DEPARTAMENTO      |TOTAL_CASOS|
++------------------+-----------+
+|VALLE             |        26 |
+|SANTANDER         |         9 |
+|BOYACÁ            |         9 |
+|ANTIOQUIA         |         8 |
+|META              |         7 |
+|SUCRE             |         7 |
+...
++------------------+-----------+
 
 ## 👨‍💻 Autor
 
