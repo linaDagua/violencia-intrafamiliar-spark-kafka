@@ -199,6 +199,8 @@ A continuación se muestra cómo se visualizan los resultados de los micro-batch
 
 Casos por Arma/Medio
 Batch: 13
+
+```bash
 -------------------------------------------
 +--------------------+-----------+
 |ARMAS MEDIOS        |TOTAL_CASOS|
@@ -211,7 +213,9 @@ Batch: 13
 |ARMA DE FUEGO       |         1 |
 |CORTOPUNZANTES      |         1 |
 +--------------------+-----------+
+```
 
+```bash
 Casos por Género
 Batch: 13
 -------------------------------------------
@@ -221,7 +225,9 @@ Batch: 13
 |FEMENINO |   80|
 |MASCULINO|   23|
 +---------+-----+
+```
 
+```bash
 Evolución Temporal por Año
 Batch: 13
 -------------------------------------------
@@ -230,7 +236,9 @@ Batch: 13
 +----+--------------+
 |2010|           104|
 +----+--------------+
+```
 
+```bash
 Casos por Departamento
 Batch: 14
 -------------------------------------------
@@ -245,6 +253,7 @@ Batch: 14
 |SUCRE             |         7 |
 ...
 +------------------+-----------+
+```
 
 ## 👨‍💻 Autor
 
